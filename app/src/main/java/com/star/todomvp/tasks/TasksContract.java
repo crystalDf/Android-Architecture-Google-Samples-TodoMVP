@@ -64,5 +64,7 @@ public interface TasksContract {
         void clearCompletedTasks();
 
         void setFiltering(TasksFilterType requestType);
+
+        TasksFilterType getFiltering();
     }
 }
