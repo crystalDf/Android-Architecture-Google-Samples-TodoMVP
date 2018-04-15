@@ -62,6 +62,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     };
 
     public TasksFragment() {
+
     }
 
     public static TasksFragment newInstance() {
@@ -99,6 +100,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
 
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 root.findViewById(R.id.refresh_layout);
+
         swipeRefreshLayout.setColorSchemeColors(
                 ContextCompat.getColor(getActivity(), R.color.colorPrimary),
                 ContextCompat.getColor(getActivity(), R.color.colorAccent),

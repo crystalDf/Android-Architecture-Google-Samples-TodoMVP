@@ -17,15 +17,15 @@ public class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {
         super(context, attrs);
     }
 
+    public void setScrollUpChild(View scrollUpChild) {
+        mScrollUpChild = scrollUpChild;
+    }
+
     @Override
     public boolean canChildScrollUp() {
         if (mScrollUpChild != null) {
             return mScrollUpChild.canScrollVertically(-1);
         }
         return super.canChildScrollUp();
-    }
-
-    public void setScrollUpChild(View scrollUpChild) {
-        mScrollUpChild = scrollUpChild;
     }
 }

@@ -12,15 +12,15 @@ public class AppExecutors {
 
     private static final int THREAD_COUNT = 3;
 
-    private final Executor diskIO;
-    private final Executor networkIO;
-    private final Executor mainThread;
+    private final Executor mDiskIO;
+    private final Executor mNetworkIO;
+    private final Executor mMainThread;
 
     @VisibleForTesting
     public AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
-        this.diskIO = diskIO;
-        this.networkIO = networkIO;
-        this.mainThread = mainThread;
+        this.mDiskIO = diskIO;
+        this.mNetworkIO = networkIO;
+        this.mMainThread = mainThread;
     }
 
     public AppExecutors() {
@@ -30,15 +30,15 @@ public class AppExecutors {
     }
 
     public Executor getDiskIO() {
-        return diskIO;
+        return mDiskIO;
     }
 
     public Executor getNetworkIO() {
-        return networkIO;
+        return mNetworkIO;
     }
 
     public Executor getMainThread() {
-        return mainThread;
+        return mMainThread;
     }
 
     private static class MainThreadExecutor implements Executor {
