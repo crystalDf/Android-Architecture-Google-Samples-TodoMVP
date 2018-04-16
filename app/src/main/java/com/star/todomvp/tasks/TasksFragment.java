@@ -242,8 +242,8 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     @Override
     public void showNoCompletedTasks() {
         showNoTasksViews(
-                getResources().getString(R.string.no_tasks_all),
-                R.drawable.ic_assignment_turned_in_24dp,
+                getResources().getString(R.string.no_tasks_completed),
+                R.drawable.ic_verified_user_24dp,
                 false
         );
     }
