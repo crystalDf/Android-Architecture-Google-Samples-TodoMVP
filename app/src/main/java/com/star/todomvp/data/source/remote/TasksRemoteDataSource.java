@@ -32,7 +32,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
         return INSTANCE;
     }
 
-    private TasksRemoteDataSource() {}
+    private TasksRemoteDataSource() {
+
+    }
 
     private static void addTask(String title, String description) {
         Task newTask = new Task(title, description);
@@ -42,7 +44,9 @@ public class TasksRemoteDataSource implements TasksDataSource {
     @Override
     public void getTasks(final @NonNull LoadTasksCallback callback) {
         Handler handler = new Handler();
-        handler.postDelayed(() -> callback.onTasksLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values())), SERVICE_LATENCY_IN_MILLIS);
+        handler.postDelayed(() ->
+                callback.onTasksLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values())),
+                SERVICE_LATENCY_IN_MILLIS);
     }
 
     @Override
@@ -50,7 +54,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
         final Task task = TASKS_SERVICE_DATA.get(taskId);
 
         Handler handler = new Handler();
-        handler.postDelayed(() -> callback.onTaskLoaded(task), SERVICE_LATENCY_IN_MILLIS);
+        handler.postDelayed(() ->
+                callback.onTaskLoaded(task), SERVICE_LATENCY_IN_MILLIS);
     }
 
     @Override

@@ -93,9 +93,16 @@ public final class Task {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         Task task = (Task) o;
+
         return Objects.equal(mId, task.mId) &&
                 Objects.equal(mTitle, task.mTitle) &&
                 Objects.equal(mDescription, task.mDescription);

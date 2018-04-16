@@ -72,6 +72,7 @@ public class TasksLocalDataSource implements TasksDataSource {
     @Override
     public void saveTask(@NonNull final Task task) {
         checkNotNull(task);
+
         Runnable saveRunnable = () -> mTasksDao.insertTask(task);
         mAppExecutors.getDiskIO().execute(saveRunnable);
     }

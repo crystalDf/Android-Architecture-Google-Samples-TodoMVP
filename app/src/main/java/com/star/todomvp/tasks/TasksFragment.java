@@ -61,12 +61,12 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         }
     };
 
-    public TasksFragment() {
-
-    }
-
     public static TasksFragment newInstance() {
         return new TasksFragment();
+    }
+
+    public TasksFragment() {
+
     }
 
     @Override
@@ -108,7 +108,6 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         );
 
         swipeRefreshLayout.setScrollUpChild(listView);
-
         swipeRefreshLayout.setOnRefreshListener(() -> mPresenter.loadTasks(false));
 
         setHasOptionsMenu(true);

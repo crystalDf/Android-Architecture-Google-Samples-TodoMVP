@@ -21,9 +21,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public static final String ARGUMENT_EDIT_TASK_ID = "EDIT_TASK_ID";
 
     private AddEditTaskContract.Presenter mPresenter;
-
     private TextView mTitle;
-
     private TextView mDescription;
 
     public static AddEditTaskFragment newInstance() {
@@ -32,17 +30,6 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     public AddEditTaskFragment() {
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.start();
-    }
-
-    @Override
-    public void setPresenter(@NonNull AddEditTaskContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
     }
 
     @Override
@@ -60,11 +47,27 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
+
         mTitle = root.findViewById(R.id.add_task_title);
         mDescription = root.findViewById(R.id.add_task_description);
+
         setHasOptionsMenu(true);
+
         return root;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mPresenter.start();
+    }
+
+    @Override
+    public void setPresenter(@NonNull AddEditTaskContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
+
 
     @Override
     public void showEmptyTaskError() {
