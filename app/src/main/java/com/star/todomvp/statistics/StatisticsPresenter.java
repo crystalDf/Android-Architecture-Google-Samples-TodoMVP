@@ -55,8 +55,8 @@ public class StatisticsPresenter implements StatisticsContract.Presenter {
                 if (!mStatisticsView.isActive()) {
                     return;
                 }
-                mStatisticsView.setProgressIndicator(false);
 
+                mStatisticsView.setProgressIndicator(false);
                 mStatisticsView.showStatistics(activeTasks, completedTasks);
             }
 

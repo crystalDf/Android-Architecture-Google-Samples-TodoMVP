@@ -16,16 +16,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class StatisticsFragment extends Fragment implements StatisticsContract.View {
 
     private TextView mStatisticsTV;
-
     private StatisticsContract.Presenter mPresenter;
 
     public static StatisticsFragment newInstance() {
         return new StatisticsFragment();
-    }
-
-    @Override
-    public void setPresenter(@NonNull StatisticsContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
     }
 
     @Nullable
@@ -34,13 +28,20 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.statistics_frag, container, false);
         mStatisticsTV = root.findViewById(R.id.statistics);
+
         return root;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
         mPresenter.start();
+    }
+
+    @Override
+    public void setPresenter(@NonNull StatisticsContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
     }
 
     @Override

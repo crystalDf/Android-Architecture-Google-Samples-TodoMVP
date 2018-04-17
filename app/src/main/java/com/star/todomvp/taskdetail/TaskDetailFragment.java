@@ -32,11 +32,8 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     private static final int REQUEST_EDIT_TASK = 1;
 
     private TaskDetailContract.Presenter mPresenter;
-
     private TextView mDetailTitle;
-
     private TextView mDetailDescription;
-
     private CheckBox mDetailCompleteStatus;
 
     public static TaskDetailFragment newInstance(@Nullable String taskId) {
@@ -44,13 +41,8 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         arguments.putString(ARGUMENT_TASK_ID, taskId);
         TaskDetailFragment fragment = new TaskDetailFragment();
         fragment.setArguments(arguments);
-        return fragment;
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.start();
+        return fragment;
     }
 
     @Nullable
@@ -72,8 +64,19 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     }
 
     @Override
-    public void setPresenter(@NonNull TaskDetailContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+    public void onResume() {
+        super.onResume();
+
+        mPresenter.start();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_EDIT_TASK) {
+            if (resultCode == Activity.RESULT_OK) {
+                getActivity().finish();
+            }
+        }
     }
 
     @Override
@@ -92,6 +95,11 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     }
 
     @Override
+    public void setPresenter(@NonNull TaskDetailContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
+
+    @Override
     public void setLoadingIndicator(boolean active) {
         if (active) {
             mDetailTitle.setText("");
@@ -100,14 +108,27 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     }
 
     @Override
-    public void hideDescription() {
-        mDetailDescription.setVisibility(View.GONE);
+    public void showMissingTask() {
+        mDetailTitle.setText("");
+        mDetailDescription.setText(getString(R.string.no_data));
     }
 
     @Override
     public void hideTitle() {
         mDetailTitle.setVisibility(View.GONE);
     }
+
+    @Override
+    public void showTitle(@NonNull String title) {
+        mDetailTitle.setVisibility(View.VISIBLE);
+        mDetailTitle.setText(title);
+    }
+
+    @Override
+    public void hideDescription() {
+        mDetailDescription.setVisibility(View.GONE);
+    }
+
 
     @Override
     public void showDescription(@NonNull String description) {
@@ -151,27 +172,6 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     public void showTaskMarkedActive() {
         Snackbar.make(getView(), getString(R.string.task_marked_active), Snackbar.LENGTH_LONG)
                 .show();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_EDIT_TASK) {
-            if (resultCode == Activity.RESULT_OK) {
-                getActivity().finish();
-            }
-        }
-    }
-
-    @Override
-    public void showTitle(@NonNull String title) {
-        mDetailTitle.setVisibility(View.VISIBLE);
-        mDetailTitle.setText(title);
-    }
-
-    @Override
-    public void showMissingTask() {
-        mDetailTitle.setText("");
-        mDetailDescription.setText(getString(R.string.no_data));
     }
 
     @Override

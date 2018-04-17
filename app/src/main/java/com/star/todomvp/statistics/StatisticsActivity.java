@@ -21,11 +21,11 @@ public class StatisticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.statistics_act);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         ActionBar ab = getSupportActionBar();
         ab.setTitle(R.string.statistics_title);
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -33,6 +33,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
@@ -40,6 +41,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         StatisticsFragment statisticsFragment = (StatisticsFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.contentFrame);
+
         if (statisticsFragment == null) {
             statisticsFragment = StatisticsFragment.newInstance();
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
@@ -57,6 +59,7 @@ public class StatisticsActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -74,6 +77,7 @@ public class StatisticsActivity extends AppCompatActivity {
                     }
                     menuItem.setChecked(true);
                     mDrawerLayout.closeDrawers();
+
                     return true;
                 });
     }

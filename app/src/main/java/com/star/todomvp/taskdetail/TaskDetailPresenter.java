@@ -13,7 +13,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TaskDetailPresenter implements TaskDetailContract.Presenter {
 
     private final TasksRepository mTasksRepository;
-
     private final TaskDetailContract.View mTaskDetailView;
 
     @Nullable
@@ -119,6 +118,7 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
         } else {
             mTaskDetailView.showDescription(description);
         }
+
         mTaskDetailView.showCompletionStatus(task.isCompleted());
     }
 }
