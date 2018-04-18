@@ -140,6 +140,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
                 mPresenter.loadTasks(true);
                 break;
         }
+
         return true;
     }
 
@@ -158,10 +159,11 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         if (getView() == null) {
             return;
         }
-        final SwipeRefreshLayout srl =
+
+        final SwipeRefreshLayout swipeRefreshLayout =
                 getView().findViewById(R.id.refresh_layout);
 
-        srl.post(() -> srl.setRefreshing(active));
+        swipeRefreshLayout.post(() -> swipeRefreshLayout.setRefreshing(active));
     }
 
     @Override
@@ -275,6 +277,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
                     break;
             }
             mPresenter.loadTasks(false);
+
             return true;
         });
 
@@ -331,6 +334,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View rowView = convertView;
+
             if (rowView == null) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
                 rowView = inflater.inflate(R.layout.task_item, parent, false);
@@ -344,6 +348,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
             CheckBox completeCB = rowView.findViewById(R.id.complete);
 
             completeCB.setChecked(task.isCompleted());
+
             if (task.isCompleted()) {
                 rowView.setBackground(parent.getContext()
                         .getResources().getDrawable(R.drawable.list_completed_touch_feedback));
