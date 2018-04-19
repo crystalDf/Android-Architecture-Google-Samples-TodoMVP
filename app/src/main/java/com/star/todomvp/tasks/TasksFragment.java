@@ -92,11 +92,11 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         mNoTaskAddView = root.findViewById(R.id.noTasksAdd);
         mNoTaskAddView.setOnClickListener(v -> showAddTask());
 
-        FloatingActionButton fab =
+        FloatingActionButton floatingActionButton =
                 getActivity().findViewById(R.id.fab_add_task);
 
-        fab.setImageResource(R.drawable.ic_add);
-        fab.setOnClickListener(v -> mPresenter.addNewTask());
+        floatingActionButton.setImageResource(R.drawable.ic_add);
+        floatingActionButton.setOnClickListener(v -> mPresenter.addNewTask());
 
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 root.findViewById(R.id.refresh_layout);

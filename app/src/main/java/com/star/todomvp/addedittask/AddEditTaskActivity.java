@@ -20,7 +20,6 @@ public class AddEditTaskActivity extends AppCompatActivity {
     public static final String SHOULD_LOAD_DATA_FROM_REPO_KEY = "SHOULD_LOAD_DATA_FROM_REPO_KEY";
 
     private AddEditTaskPresenter mAddEditTaskPresenter;
-
     private ActionBar mActionBar;
 
     @Override
@@ -30,6 +29,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setDisplayShowHomeEnabled(true);
@@ -84,6 +84,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+
         return true;
     }
 

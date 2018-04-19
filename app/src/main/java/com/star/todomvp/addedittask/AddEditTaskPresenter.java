@@ -53,6 +53,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         if (isNewTask()) {
             throw new RuntimeException("populateTask() was called but task is new.");
         }
+
         mTasksRepository.getTask(mTaskId, this);
     }
 
@@ -62,6 +63,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
             mAddTaskView.setTitle(task.getTitle());
             mAddTaskView.setDescription(task.getDescription());
         }
+
         mIsDataMissing = false;
     }
 
@@ -83,6 +85,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
 
     private void createTask(String title, String description) {
         Task newTask = new Task(title, description);
+
         if (newTask.isEmpty()) {
             mAddTaskView.showEmptyTaskError();
         } else {
@@ -95,6 +98,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         if (isNewTask()) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
+
         mTasksRepository.saveTask(new Task(title, description, mTaskId));
         mAddTaskView.showTasksList();
     }
