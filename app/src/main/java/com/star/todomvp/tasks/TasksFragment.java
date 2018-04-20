@@ -37,7 +37,8 @@ public class TasksFragment extends Fragment implements TasksContract.View {
 
     private TasksContract.Presenter mPresenter;
     private TasksAdapter mListAdapter;
-    private View mNoTasksView;
+
+    private LinearLayout mNoTasksView;
     private ImageView mNoTaskIcon;
     private TextView mNoTaskMainView;
     private TextView mNoTaskAddView;

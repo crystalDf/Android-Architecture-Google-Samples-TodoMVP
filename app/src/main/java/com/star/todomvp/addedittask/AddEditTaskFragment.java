@@ -21,6 +21,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public static final String ARGUMENT_EDIT_TASK_ID = "EDIT_TASK_ID";
 
     private AddEditTaskContract.Presenter mPresenter;
+
     private TextView mTitle;
     private TextView mDescription;
 

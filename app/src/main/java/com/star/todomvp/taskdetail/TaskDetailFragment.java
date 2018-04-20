@@ -32,6 +32,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     private static final int REQUEST_EDIT_TASK = 1;
 
     private TaskDetailContract.Presenter mPresenter;
+
     private TextView mDetailTitle;
     private TextView mDetailDescription;
     private CheckBox mDetailCompleteStatus;

@@ -15,8 +15,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class StatisticsFragment extends Fragment implements StatisticsContract.View {
 
-    private TextView mStatisticsTV;
     private StatisticsContract.Presenter mPresenter;
+
+    private TextView mStatisticsTV;
 
     public static StatisticsFragment newInstance() {
         return new StatisticsFragment();
