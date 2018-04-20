@@ -50,15 +50,17 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.taskdetail_frag, container, false);
+
         setHasOptionsMenu(true);
+
         mDetailTitle = root.findViewById(R.id.task_detail_title);
         mDetailDescription = root.findViewById(R.id.task_detail_description);
         mDetailCompleteStatus = root.findViewById(R.id.task_detail_complete);
 
-        FloatingActionButton fab =
+        FloatingActionButton floatingActionButton =
                 getActivity().findViewById(R.id.fab_edit_task);
 
-        fab.setOnClickListener(v -> mPresenter.editTask());
+        floatingActionButton.setOnClickListener(v -> mPresenter.editTask());
 
         return root;
     }
@@ -86,6 +88,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
                 mPresenter.deleteTask();
                 return true;
         }
+
         return false;
     }
 

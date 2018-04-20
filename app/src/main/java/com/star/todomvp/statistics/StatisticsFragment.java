@@ -27,6 +27,7 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.statistics_frag, container, false);
+
         mStatisticsTV = root.findViewById(R.id.statistics);
 
         return root;
