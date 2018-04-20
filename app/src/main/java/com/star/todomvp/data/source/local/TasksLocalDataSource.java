@@ -33,6 +33,7 @@ public class TasksLocalDataSource implements TasksDataSource {
                 }
             }
         }
+
         return INSTANCE;
     }
 
@@ -40,6 +41,7 @@ public class TasksLocalDataSource implements TasksDataSource {
     public void getTasks(@NonNull final LoadTasksCallback callback) {
         Runnable runnable = () -> {
             final List<Task> tasks = mTasksDao.getTasks();
+
             mAppExecutors.getMainThread().execute(() -> {
                 if (tasks.isEmpty()) {
                     callback.onDataNotAvailable();
@@ -74,6 +76,7 @@ public class TasksLocalDataSource implements TasksDataSource {
         checkNotNull(task);
 
         Runnable saveRunnable = () -> mTasksDao.insertTask(task);
+
         mAppExecutors.getDiskIO().execute(saveRunnable);
     }
 
@@ -92,6 +95,7 @@ public class TasksLocalDataSource implements TasksDataSource {
     @Override
     public void activateTask(@NonNull final Task task) {
         Runnable activateRunnable = () -> mTasksDao.updateCompleted(task.getId(), false);
+
         mAppExecutors.getDiskIO().execute(activateRunnable);
     }
 

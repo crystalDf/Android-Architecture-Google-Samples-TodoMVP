@@ -16,12 +16,15 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
 
     private static final Map<String, Task> TASKS_SERVICE_DATA = new LinkedHashMap<>();
 
-    private FakeTasksRemoteDataSource() {}
+    private FakeTasksRemoteDataSource() {
+
+    }
 
     public static FakeTasksRemoteDataSource getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new FakeTasksRemoteDataSource();
         }
+
         return INSTANCE;
     }
 
@@ -79,13 +82,13 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
     }
 
     @Override
-    public void deleteTask(@NonNull String taskId) {
-        TASKS_SERVICE_DATA.remove(taskId);
+    public void deleteAllTasks() {
+        TASKS_SERVICE_DATA.clear();
     }
 
     @Override
-    public void deleteAllTasks() {
-        TASKS_SERVICE_DATA.clear();
+    public void deleteTask(@NonNull String taskId) {
+        TASKS_SERVICE_DATA.remove(taskId);
     }
 
     @VisibleForTesting

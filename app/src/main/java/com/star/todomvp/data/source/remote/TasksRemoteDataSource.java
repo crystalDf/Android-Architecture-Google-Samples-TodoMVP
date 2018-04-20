@@ -25,15 +25,15 @@ public class TasksRemoteDataSource implements TasksDataSource {
         addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!");
     }
 
+    private TasksRemoteDataSource() {
+
+    }
+
     public static TasksRemoteDataSource getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new TasksRemoteDataSource();
         }
         return INSTANCE;
-    }
-
-    private TasksRemoteDataSource() {
-
     }
 
     private static void addTask(String title, String description) {

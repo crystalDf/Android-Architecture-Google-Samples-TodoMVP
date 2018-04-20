@@ -79,6 +79,7 @@ public class TasksActivity extends AppCompatActivity {
 
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -96,6 +97,7 @@ public class TasksActivity extends AppCompatActivity {
                         default:
                             break;
                     }
+
                     menuItem.setChecked(true);
                     mDrawerLayout.closeDrawers();
 

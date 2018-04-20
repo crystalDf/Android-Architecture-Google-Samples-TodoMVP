@@ -23,6 +23,7 @@ public abstract class ToDoDatabase extends RoomDatabase {
                         ToDoDatabase.class, "Tasks.db")
                         .build();
             }
+
             return INSTANCE;
         }
     }
