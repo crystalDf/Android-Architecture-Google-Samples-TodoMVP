@@ -45,7 +45,8 @@ public class TasksPresenterTest {
 
         when(mTasksView.isActive()).thenReturn(true);
 
-        sTasks = Lists.newArrayList(new Task("Title1", "Description1"),
+        sTasks = Lists.newArrayList(
+                new Task("Title1", "Description1"),
                 new Task("Title2", "Description2", true),
                 new Task("Title3", "Description3", true));
     }
@@ -68,8 +69,8 @@ public class TasksPresenterTest {
         mLoadTasksCallbackArgumentCaptor.getValue().onTasksLoaded(sTasks);
 
         InOrder inOrder = inOrder(mTasksView);
-        inOrder.verify(mTasksView).setLoadingIndicator(true);
 
+        inOrder.verify(mTasksView).setLoadingIndicator(true);
         inOrder.verify(mTasksView).setLoadingIndicator(false);
 
         ArgumentCaptor<List> showTasksArgumentCaptor = ArgumentCaptor.forClass(List.class);
@@ -79,6 +80,7 @@ public class TasksPresenterTest {
 
     @Test
     public void loadActiveTasksFromRepositoryAndLoadIntoView() {
+
         mTasksPresenter.setFiltering(TasksFilterType.ACTIVE_TASKS);
         mTasksPresenter.loadTasks(true);
 
@@ -86,6 +88,7 @@ public class TasksPresenterTest {
         mLoadTasksCallbackArgumentCaptor.getValue().onTasksLoaded(sTasks);
 
         verify(mTasksView).setLoadingIndicator(false);
+
         ArgumentCaptor<List> showTasksArgumentCaptor = ArgumentCaptor.forClass(List.class);
         verify(mTasksView).showTasks(showTasksArgumentCaptor.capture());
         assertTrue(showTasksArgumentCaptor.getValue().size() == 1);
@@ -93,6 +96,7 @@ public class TasksPresenterTest {
 
     @Test
     public void loadCompletedTasksFromRepositoryAndLoadIntoView() {
+
         mTasksPresenter.setFiltering(TasksFilterType.COMPLETED_TASKS);
         mTasksPresenter.loadTasks(true);
 
@@ -100,6 +104,7 @@ public class TasksPresenterTest {
         mLoadTasksCallbackArgumentCaptor.getValue().onTasksLoaded(sTasks);
 
         verify(mTasksView).setLoadingIndicator(false);
+
         ArgumentCaptor<List> showTasksArgumentCaptor = ArgumentCaptor.forClass(List.class);
         verify(mTasksView).showTasks(showTasksArgumentCaptor.capture());
         assertTrue(showTasksArgumentCaptor.getValue().size() == 2);
@@ -134,6 +139,7 @@ public class TasksPresenterTest {
     @Test
     public void activateTask_ShowsTaskMarkedActive() {
         Task task = new Task("Details Requested", "For this task", true);
+
         mTasksPresenter.loadTasks(true);
 
         mTasksPresenter.activateTask(task);
